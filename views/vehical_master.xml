@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="vehical_form_view">
+            <field name="name">Vehical Master</field>
+			<field name="model">vehical.master</field>
+		    <field name="arch" type="xml">
+		        <form string="Vehical Master">
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="maintenance,active,inactive" readonly="1"/>
+					</header>
+		            <sheet>
+		                <div>
+		                    <h1 class="mt0">
+		                        <label string="Model No"/>
+		                        <field name="name" required ='True' class="oe_inline"/>
+		                    </h1>
+		                </div>
+		                <group>
+		                    <group>
+		                        <field name="registration_no" required ='True'/>
+		                        <field name="color"/>
+		                        <field name="value"/>
+		                        <field name="mileage" required ='True'/>
+		                        <field name="meter_reading"/>
+		                    </group>
+		                    <group>
+		                        <field name="purchase_date" required ='True'/>
+		                        <field name="type" widget="radio" required ='True'/>
+		                        <field name="capacity"/>
+		                        <field name="fuel"/>
+		                    </group>
+		                </group>
+		            </sheet>
+		        </form>
+		    </field>
+        </record>
+        <record id="vehical_tree_view" model="ir.ui.view">
+			<field name="name">Vehical Master</field>
+			<field name="model">vehical.master</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Vehical Information">
+					<field name="name"/>
+				    <field name="registration_no"/>
+				</tree>
+			</field>
+		</record>
+        <record id="vehical_master_action" model="ir.actions.act_window">
+			<field name="name">vehical.master</field>
+			<field name="res_model">vehical.master</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+        <!-- Menuitem-->
+		<menuitem id="main_menu_vehical" name="Vehical"/>
+		<menuitem id="sub_menu_vehical_master" name="Vehical Master" action="vehical_master_action" parent="main_menu_vehical"/>
+    </data>
+</odoo>
