@@ -14,8 +14,21 @@ class Vehical(models.Model):
     capacity = fields.Float(string='Passenger Capacity')
     type = fields.Selection([('ac','AC'),('non_ac','NON AC')],'Type',default='ac')
     fuel = fields.Float(string='Fuel Reading', help='Current Fuel Reading')
+    rate = fields.Float(string='Rate Per KM.')
     state = fields.Selection([
         ('maintenance', 'Maintenance'),
         ('active', 'Active'),
 		('inactive', 'Inactive')
         ], string='Status', readonly=True, default='inactive')
+
+    @api.multi
+    def action_active(self):
+        return self.write({'state': 'active'})
+
+    @api.multi
+    def action_inactive(self):
+        return self.write({'state': 'inactive'})
+
+    @api.multi
+    def action_maintenance(self):
+        return self.write({'state': 'maintenance'})

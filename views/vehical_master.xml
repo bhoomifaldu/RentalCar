@@ -7,22 +7,21 @@
 		    <field name="arch" type="xml">
 		        <form string="Vehical Master">
 					<header>
+					    <button name="action_active" states="inactive,maintenance" type="object" string="Active"/>
+					    <button name="action_maintenance" states="inactive,active" type="object" string="Maintenance"/>
+					    <button name="action_inactive" states="maintenance,active" type="object" string="inactive"/>
 						<field name="state" widget="statusbar" statusbar_visible="maintenance,active,inactive" readonly="1"/>
 					</header>
 		            <sheet>
-		                <div>
-		                    <h1 class="mt0">
-		                        <label string="Model No"/>
-		                        <field name="name" required ='True' class="oe_inline"/>
-		                    </h1>
-		                </div>
 		                <group>
 		                    <group>
+		                        <field name="name"/>
 		                        <field name="registration_no" required ='True'/>
 		                        <field name="color"/>
 		                        <field name="value"/>
 		                        <field name="mileage" required ='True'/>
 		                        <field name="meter_reading"/>
+		                        <field name="rate"/>
 		                    </group>
 		                    <group>
 		                        <field name="purchase_date" required ='True'/>
@@ -47,7 +46,7 @@
 			</field>
 		</record>
         <record id="vehical_master_action" model="ir.actions.act_window">
-			<field name="name">vehical.master</field>
+			<field name="name">Vehical Master</field>
 			<field name="res_model">vehical.master</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
