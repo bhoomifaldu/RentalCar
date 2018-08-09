@@ -1,10 +1,12 @@
 # -*- encoding: utf-8 -*-
 from odoo import api, fields, models, _
+from datetime import datetime, timedelta
 
 class Vehical(models.Model):
     _name = 'vehical.master'
 
     name = fields.Char('Model No')
+    year = fields.Date(default=datetime.now().strftime("%m-%Y"))
     registration_no = fields.Char(string='Registration No')
     color = fields.Char(string='Color')
     value = fields.Float(string='Value',help='Vehical Price')
