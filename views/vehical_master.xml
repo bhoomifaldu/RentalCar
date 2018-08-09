@@ -24,7 +24,6 @@
 		                        <field name="rate"/>
 		                    </group>
 		                    <group>
-		                        <field name="year"/>
 		                        <field name="purchase_date" required ='True'/>
 		                        <field name="type" widget="radio" required ='True'/>
 		                        <field name="capacity"/>
